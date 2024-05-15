@@ -16,3 +16,4 @@ WORKDIR /home/node/code
 COPY --from=build --chown=node:node /build .
 
 CMD [ "node", "index.js" ]
+
