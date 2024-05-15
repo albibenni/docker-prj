@@ -1,0 +1,17 @@
+version: "3" # compose version
+
+services:
+  web:
+    build: . #there is a docker file in this dir
+    ports:
+      - "3000:3000"
+    volumes:
+      - .:/home/node/code #like a bind mount from . mount to /....
+      - /home/node/code/node_modules #dont bring the node_modules inside need install
+    links:
+      - db #start order
+    environment:
+      MONGO_CONNECTION_STRING: mongodb://db:27017
+  db:
+    image: mongo:3
+  
