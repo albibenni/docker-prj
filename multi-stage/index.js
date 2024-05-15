@@ -4,7 +4,7 @@ const hapi = require("@hapi/hapi");
 async function start() {
   const server = hapi.server({
     host: "0.0.0.0",
-    port: process.env.PORT || 3000
+    port: process.env.PORT || 3000,
   });
 
   server.route({
@@ -12,13 +12,12 @@ async function start() {
     path: "/",
     handler() {
       return { success: true };
-    }
+    },
   });
 
   await server.register({
     plugin: require("hapi-pino"),
-    options: {
-    }
+    options: {},
   });
 
   await server.start();
@@ -26,7 +25,7 @@ async function start() {
   return server;
 }
 
-start().catch(err => {
+start().catch((err) => {
   console.log(err);
   process.exit(1);
 });
