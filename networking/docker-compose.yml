@@ -1,8 +1,9 @@
-version: "3" # compose version
-
 services:
   web:
-    build: . #there is a docker file in this dir
+    #build: . #there is a docker file in this dir
+    build: 
+      context: .
+      dockerfile: dev.Dockerfile 
     ports:
       - "3000:3000"
     volumes:
